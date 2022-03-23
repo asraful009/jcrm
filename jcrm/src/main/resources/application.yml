@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: JCRM
+server:
+  port: 10001
+app:
+  name: "JCRM"
+  description: "${app.name} is a Spring Boot application"

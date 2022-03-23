@@ -3,8 +3,10 @@ package com.cyber009.jcrm;
 import java.util.Arrays;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.metrics.buffering.BufferingApplicationStartup;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
@@ -12,7 +14,11 @@ import org.springframework.context.annotation.Bean;
 public class JcrmApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(JcrmApplication.class, args);
+    SpringApplication application = new SpringApplication(JcrmApplication.class);
+    application.setApplicationStartup(new BufferingApplicationStartup(8192));
+    // System.out.println("🏁 server is running on http://localhost:");
+    application.run(args);
+
   }
 
   @Bean
